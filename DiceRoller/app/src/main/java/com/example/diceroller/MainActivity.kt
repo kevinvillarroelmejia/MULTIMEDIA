@@ -23,11 +23,20 @@ class MainActivity : AppCompatActivity() {
 
         //dandole accion al boton
         btnRoll.setOnClickListener {
-                val toast= Toast.makeText(this,"Dice rolled!", Toast.LENGTH_LONG)
-                //toast.show()
-            val tvdice: TextView=findViewById(R.id.tvDice)
-            tvdice.text="6"
-            }
+            rollDice()
         }
-
     }
+
+    private fun rollDice() {
+        val dice= Dice(6)
+        val diceRoll=dice.roll()
+        Toast.makeText(this, "Dice rolled!", Toast.LENGTH_LONG).show()
+        //toast.show()
+        val tvdice: TextView = findViewById(R.id.tvDice)
+        //convertimos a toString por que diceRoll devuelve un Int
+        tvdice.text = diceRoll.toString()
+    }
+
+
+
+}
