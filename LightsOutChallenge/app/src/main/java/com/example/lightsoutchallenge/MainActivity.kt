@@ -15,9 +15,9 @@ import androidx.core.content.ContextCompat
 import com.example.lightsoutchallenge.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-/*
-IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
-*     buildFeatures {
+    /*
+    IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
+    *     buildFeatures {
         viewBinding = true
     }*/
     private lateinit var binding: ActivityMainBinding
@@ -55,6 +55,7 @@ IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
                     if (existeVictoria()) {
                         //mensaje cuando ganamos
                         Toast.makeText(this, "¡Has ganado!", Toast.LENGTH_LONG).show()
+                        soundPool.play(sonidoVictoria,1f,1f,1,0,1f)
                     }
                 }
             }
@@ -149,6 +150,7 @@ IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
     //cambia esa celda y sus 4 vecinos
     private fun cambiaValorVecinos(f: Int, c:Int){
         vibrar()
+        soundPool.play(sonidoClic, 1f, 1f, 1, 0, 1f)
         cambiarValorCelda(f, c)  //CAMBIEN VALOR DE la propia celda pulsada
         cambiarValorCelda(f - 1, c)   // CAMBIEN VALOR arriba
         cambiarValorCelda(f + 1, c)   // CAMBIEN VALOR abajo
