@@ -53,6 +53,7 @@ IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
                 botones[f][c].setOnClickListener {
                     cambiaValorVecinos(f, c)
                     if (existeVictoria()) {
+                        soundPool.play(sonidoVictoria, 1f, 1f, 1, 0, 1f)
                         //mensaje cuando ganamos
                         Toast.makeText(this, "¡Has ganado!", Toast.LENGTH_LONG).show()
                     }
@@ -126,9 +127,9 @@ IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
 
     private fun pintarBoton(boton: Button, encendido: Boolean) {
         val color = if (encendido) { //SI ESTA ENCENDIDO RECOGE EL COLOR DEL XML
-            ContextCompat.getColor(this, R.color.colorSecundario)
-        } else { //SI ESTA APAGADO RECOGE EL COLOR DEL XML
             ContextCompat.getColor(this, R.color.colorPrimario)
+        } else { //SI ESTA APAGADO RECOGE EL COLOR DEL XML
+            ContextCompat.getColor(this, R.color.colorSecundario)
         }
         //TIÑE EL BOTON CON EL COLOR
         boton.backgroundTintList = ColorStateList.valueOf(color)
@@ -149,6 +150,7 @@ IMPORTANTE PONER ESTO EN build.granle.kts para que funcione el binding
     //cambia esa celda y sus 4 vecinos
     private fun cambiaValorVecinos(f: Int, c:Int){
         vibrar()
+        soundPool.play(sonidoClic, 1f, 1f, 1, 0, 1f)
         cambiarValorCelda(f, c)  //CAMBIEN VALOR DE la propia celda pulsada
         cambiarValorCelda(f - 1, c)   // CAMBIEN VALOR arriba
         cambiarValorCelda(f + 1, c)   // CAMBIEN VALOR abajo
