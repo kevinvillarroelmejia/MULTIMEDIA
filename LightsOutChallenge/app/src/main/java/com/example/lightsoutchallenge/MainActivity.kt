@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 botones[f][c].setOnClickListener {
                     cambiaValorVecinos(f, c)
                     if (existeVictoria()) {
+                        soundPool.play(sonidoVictoria, 1f, 1f, 1, 0, 1f)
                         //mensaje cuando ganamos
                         Toast.makeText(this, "¡Has ganado!", Toast.LENGTH_LONG).show()
                         soundPool.play(sonidoVictoria,1f,1f,1,0,1f)
@@ -127,9 +128,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun pintarBoton(boton: Button, encendido: Boolean) {
         val color = if (encendido) { //SI ESTA ENCENDIDO RECOGE EL COLOR DEL XML
-            ContextCompat.getColor(this, R.color.colorSecundario)
-        } else { //SI ESTA APAGADO RECOGE EL COLOR DEL XML
             ContextCompat.getColor(this, R.color.colorPrimario)
+        } else { //SI ESTA APAGADO RECOGE EL COLOR DEL XML
+            ContextCompat.getColor(this, R.color.colorSecundario)
         }
         //TIÑE EL BOTON CON EL COLOR
         boton.backgroundTintList = ColorStateList.valueOf(color)

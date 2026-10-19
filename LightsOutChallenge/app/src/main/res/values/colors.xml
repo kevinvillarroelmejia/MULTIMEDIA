@@ -3,6 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimario">#FF0000</color>   <!-- dorado es APAGADO -->
-    <color name="colorSecundario">#008000</color> <!-- azul es ENCENDIDO -->
+    <color name="colorPrimario">#008000</color>   <!-- dorado es APAGADO -->
+    <color name="colorSecundario">#6750A4</color> <!-- azul es ENCENDIDO -->
 </resources>
