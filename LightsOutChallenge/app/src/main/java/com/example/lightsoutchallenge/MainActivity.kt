@@ -82,16 +82,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun vibrar() {
-        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else {
-            @Suppress("DEPRECATION")
-            vibrator.vibrate(50)
-        }
-    }
-
     private fun existeVictoria(): Boolean{
         var salida=true
         for(f in 0..2){
@@ -116,7 +106,6 @@ class MainActivity : AppCompatActivity() {
 
     //valida si la posicion EXISTE
     private fun posicionValida(f: Int,c:Int): Boolean{
-        //f y c tienen que estar entre 0 y 2
         if (f in 0..2 && c in 0..2) {
             // posición válida
             return true
@@ -127,12 +116,12 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun pintarBoton(boton: Button, encendido: Boolean) {
-        val color = if (encendido) { //SI ESTA ENCENDIDO RECOGE EL COLOR DEL XML
+        val color = if (encendido) {
             ContextCompat.getColor(this, R.color.colorPrimario)
-        } else { //SI ESTA APAGADO RECOGE EL COLOR DEL XML
+        } else {
             ContextCompat.getColor(this, R.color.colorSecundario)
         }
-        //TIÑE EL BOTON CON EL COLOR
+        //pinta EL BOTON CON EL COLOR recogido del XML
         boton.backgroundTintList = ColorStateList.valueOf(color)
     }
 
@@ -152,13 +141,19 @@ class MainActivity : AppCompatActivity() {
     private fun cambiaValorVecinos(f: Int, c:Int){
         vibrar()
         soundPool.play(sonidoClic, 1f, 1f, 1, 0, 1f)
-        cambiarValorCelda(f, c)  //CAMBIEN VALOR DE la propia celda pulsada
-        cambiarValorCelda(f - 1, c)   // CAMBIEN VALOR arriba
-        cambiarValorCelda(f + 1, c)   // CAMBIEN VALOR abajo
-        cambiarValorCelda(f, c - 1)   // CAMBIEN VALOR izquierda
-        cambiarValorCelda(f, c + 1)   // CAMBIEN VALOR derecha
+        cambiarValorCelda(f, c)
+        cambiarValorCelda(f - 1, c)
+        cambiarValorCelda(f + 1, c)
+        cambiarValorCelda(f, c - 1)
+        cambiarValorCelda(f, c + 1)
         binding.tvContador.text = "Movimientos: ${++contMovimientos}"
     }
 
+    private fun vibrar() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+        }
+    }
 
 }
