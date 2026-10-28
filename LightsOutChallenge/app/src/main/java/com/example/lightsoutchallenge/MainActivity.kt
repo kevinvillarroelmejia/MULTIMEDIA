@@ -57,6 +57,8 @@ class MainActivity : AppCompatActivity() {
                         //mensaje cuando ganamos
                         Toast.makeText(this, "¡Has ganado!", Toast.LENGTH_LONG).show()
                         soundPool.play(sonidoVictoria,1f,1f,1,0,1f)
+                        //podria poner un poco de espera antes de reiniciar
+                        reiniciar()
                     }
                 }
             }
