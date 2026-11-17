@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta de la calculadora (exportada de Figma) -->
+    <color name="calc_background">#FF278100</color>
+    <color name="display_background">#FFB8FF99</color>
+    <color name="button_background">#FF87E85D</color>
+    <color name="text_button">#FF000000</color>
+    <color name="text_expression">#FF5DE866</color>
+    <color name="text_result">#FF104F14</color>
+</resources>
