@@ -8,7 +8,8 @@
     android:background="@color/calc_background"
     tools:context=".MainActivity">
 
-    <!-- Pantalla: expresion en curso (arriba) y resultado (abajo) -->
+    <!-- Recuadro haciendo referencia a una pantalla
+     expresion en operacion arriba y resultado abajo -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/display_panel"
         android:layout_width="0dp"
@@ -51,7 +52,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Teclado: 4 columnas x 5 filas -->
+    <!-- El teclado 4 columnas y 5 filas -->
     <GridLayout
         android:id="@+id/buttons_grid"
         android:layout_width="0dp"
