@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Boton base: todos los botones heredan de aqui -->
+    <!--  todos los botones heredan de aquii -->
     <style name="Widget.Calculadora.Button" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/button_background</item>
         <item name="cornerRadius">10dp</item>
@@ -14,27 +14,38 @@
         <item name="android:padding">0dp</item>
     </style>
 
-    <!-- Botones numericos y punto decimal -->
+
+
+
+    <!-- los numeros   y punto -->
     <style name="Widget.Calculadora.Button.Number">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <!-- Operadores basicos -->
+    <!-- Operadoraciones basicas -->
     <style name="Widget.Calculadora.Button.Operator">
         <item name="android:textSize">32sp</item>
+        <item name="backgroundTint">@color/button_operator</item>
     </style>
 
-    <!-- Acciones especiales: C, DEL, ± -->
+    <!-- acciones especiales: C o DEL -->
     <style name="Widget.Calculadora.Button.Special">
         <item name="android:textSize">20sp</item>
+        <item name="backgroundTint">@color/button_special</item>
+        <item name="android:textColor">@color/text_button_light</item>
     </style>
 
-    <!-- Boton destacado de igual -->
+
+
+
+    <!-- el boton del = -->
     <style name="Widget.Calculadora.Button.Equals">
         <item name="android:textSize">32sp</item>
+        <item name="backgroundTint">@color/button_equals</item>
+        <item name="android:textColor">@color/text_button_light</item>
     </style>
 
-    <!-- Pantalla secundaria: expresion en curso -->
+    <!-- Pantalla secundaria expresion en curso -->
     <style name="Widget.Calculadora.Text.Expression" parent="">
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/text_expression</item>
@@ -42,7 +53,10 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <!-- Pantalla principal: resultado -->
+
+
+
+    <!-- pantalla principal del resultado -->
     <style name="Widget.Calculadora.Text.Result" parent="">
         <item name="android:textColor">@color/text_result</item>
         <item name="android:gravity">end|center_vertical</item>

@@ -10,4 +10,10 @@
     <color name="text_button">#FF000000</color>
     <color name="text_expression">#FF5DE866</color>
     <color name="text_result">#FF104F14</color>
+
+<!-- Colores para los botones y el texto-->
+    <color name="button_operator">#FF5DE866</color>
+    <color name="button_special">#FF278100</color>
+    <color name="button_equals">#FF104F14</color>
+    <color name="text_button_light">#FFFFFFFF</color>
 </resources>

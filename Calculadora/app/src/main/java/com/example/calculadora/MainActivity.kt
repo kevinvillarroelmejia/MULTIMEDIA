@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //el tamaño de las barras
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(barras.left, barras.top, barras.right, barras.bottom)
@@ -35,13 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         configurarBotonesNumeros()
         configurarBotonesOperadores()
-        configurarBotonesEspeciales()
+        botonesEspeciales()
         actualizarPantalla()
     }
-
     // Conecta los 10 botones de numeros
     private fun configurarBotonesNumeros() {
-        val botonesNumeros = arrayOf(
+        val botonesNumeros = arrayOf( //aarray de botones
             binding.btn0, binding.btn1, binding.btn2, binding.btn3, binding.btn4,
             binding.btn5, binding.btn6, binding.btn7, binding.btn8, binding.btn9
         )
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Conecta los 4 operadores
+    // cuando se elige el operador
     private fun configurarBotonesOperadores() {
         binding.btnPlus.setOnClickListener {
             elegirOperador("+")
@@ -73,8 +73,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Conecta punto, igual, C, DEL y signo
-    private fun configurarBotonesEspeciales() {
+    // conecta punto, igual, C, DEL y signo
+    private fun botonesEspeciales() {
         binding.btnDot.setOnClickListener {
             escribirPunto()
             actualizarPantalla()
@@ -115,6 +115,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+
+
     // Anade un digito al numero actual
     private fun escribirDigito(digito: String) {
         reiniciarSiHayError()
@@ -152,6 +157,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     // Calcula la operacion y deja el resultado en la pantalla grande
     private fun pulsarIgual() {
         if (!hayError && operador != "" && !esperandoNumero) {
@@ -164,6 +171,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+
+
     // Borra el ultimo caracter escrito
     private fun borrarUltimo() {
         if (hayError) {
@@ -175,6 +187,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
+
 
     // Deja la calculadora como al principio
     private fun limpiar() {
@@ -195,14 +211,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     // Empieza de cero si habia un error
     private fun reiniciarSiHayError() {
         if (hayError) {
             limpiar()
         }
     }
-
     // Hace la operacion segun el signo y marca error si se divide entre cero
     private fun calcular(valorA: Double, signo: String, valorB: Double): Double {
         var resultado = 0.0
@@ -220,26 +234,31 @@ class MainActivity : AppCompatActivity() {
         return resultado
     }
 
+
+
+
+
+
     // Suma los dos valores
     private fun sumar(valorA: Double, valorB: Double): Double {
         return valorA + valorB
     }
-
     // Resta los dos valores
     private fun restar(valorA: Double, valorB: Double): Double {
         return valorA - valorB
     }
 
+
+
+
     // Multiplica los dos valores
     private fun multiplicar(valorA: Double, valorB: Double): Double {
         return valorA * valorB
     }
-
     // Divide los dos valores
     private fun dividir(valorA: Double, valorB: Double): Double {
         return valorA / valorB
     }
-
     // Convierte un numero en texto quitando el .0 y los errores de redondeo
     private fun formatearNumero(numero: Double): String {
         val redondeado = kotlin.math.round(numero * 1000000.0) / 1000000.0
