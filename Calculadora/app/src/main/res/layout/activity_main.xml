@@ -8,8 +8,14 @@
     android:background="@color/calc_background"
     tools:context=".MainActivity">
 
-    <!-- la pantalla
-     expresion en curso esta arriba y el resultado abajo -->
+
+    <!-- el fondo usa @color/calc_background (colors.xml) en vez de un color escrito
+     -->
+
+    <!-- expresion en curso (arriba) y resultado (abajo) -->
+    <!--   ConstraintLayout DENTRO de otro ConstraintLayout  -->
+    <!-- ya conocido: 0dp + toTopOf="@id/buttons_grid" estiran el panel hasta el teclado -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/display_panel"
         android:layout_width="0dp"
@@ -23,6 +29,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <!-- tamano, color y autoajuste estan en styles.xml
+        style="@style/Widget.Calculadora.Text.Result" -->
+        <!-- viene de strings.xml
+         android:text="@string/result_default"
+         -->
 
         <TextView
             android:id="@+id/tv_result"
@@ -38,6 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="16.5" />
 
+        <!-- la pantalla pequeña. toTopOf="@id/tv_result" la coloca encima del resultado -->
         <TextView
             android:id="@+id/tv_expression"
             style="@style/Widget.Calculadora.Text.Expression"
@@ -52,7 +65,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- El teclado de 4 columnas y 5 filas -->
     <GridLayout
         android:id="@+id/buttons_grid"
         android:layout_width="0dp"
@@ -66,6 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!-- Los siguientes botones repiten esta misma estructura y solo cambian id, style y texto -->
+        <!-- Botones especiales: btn_clear, btn_sign, btn_delete -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_clear"
             style="@style/Widget.Calculadora.Button.Special"
@@ -96,6 +110,7 @@
             android:layout_gravity="center"
             android:text="@string/delete" />
 
+        <!--  texto mas grande y otro color -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_divide"
             style="@style/Widget.Calculadora.Button.Operator"
@@ -106,6 +121,7 @@
             android:layout_gravity="center"
             android:text="@string/divide" />
 
+        <!--  todos comparten el mismo estilo -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_7"
             style="@style/Widget.Calculadora.Button.Number"

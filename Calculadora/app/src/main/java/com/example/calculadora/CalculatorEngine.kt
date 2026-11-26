@@ -17,12 +17,12 @@ class CalculatorEngine {
     fun obtenerResultado(): String {
         var salida = numeroActual
         if (hayError) {
-            salida = "Error: Div por 0"
+            salida = "Error: Dividido por 0"
         }
         return salida
     }
 
-    // Devuelve el texto de la pantalla pequena con la operacion en curso
+    // Devuelve el texto de la pantalla pequeña de la operacion que se esta haciendo
     fun obtenerExpresion(): String {
         var salida = ""
         if (!hayError && operador != "") {
@@ -34,7 +34,7 @@ class CalculatorEngine {
         return salida
     }
 
-    // Anade un digito al numero actual
+    // Añade un digito al numero actual
     fun escribirDigito(digito: String) {
         reiniciarSiHayError()
         if (esperandoNumero || numeroActual == "0") {
@@ -45,7 +45,7 @@ class CalculatorEngine {
         esperandoNumero = false
     }
 
-    // Anade el punto decimal solo si el numero no tiene ya uno
+    // Añade el punto decimal solo si el numero no tiene uno
     fun escribirPunto() {
         reiniciarSiHayError()
         if (esperandoNumero) {
@@ -71,7 +71,7 @@ class CalculatorEngine {
         }
     }
 
-    // Calcula la operacion y deja el resultado en la pantalla grande
+    // Calcula la operacion y deja el resultado en la pantalla
     fun pulsarIgual() {
         if (!hayError && operador != "" && !esperandoNumero) {
             val resultado = calcular(primerNumero, operador, numeroActual.toDouble())
@@ -83,7 +83,7 @@ class CalculatorEngine {
         }
     }
 
-    // Borra el ultimo caracter escrito
+    // Borra el ultimo numero o signo puesto
     fun borrarUltimo() {
         if (hayError) {
             limpiar()
@@ -95,7 +95,7 @@ class CalculatorEngine {
         }
     }
 
-    // Deja la calculadora como al principio
+    // Vuelve al inicio de la calculadora
     fun limpiar() {
         numeroActual = "0"
         primerNumero = 0.0
@@ -104,7 +104,7 @@ class CalculatorEngine {
         hayError = false
     }
 
-    // Cambia el signo del numero actual
+    // Cambia el signo del numero actual es decir el + o -
     fun cambiarSigno() {
         if (!hayError && numeroActual != "0" && (!esperandoNumero || operador == "")) {
             if (numeroActual.startsWith("-")) {
@@ -115,14 +115,14 @@ class CalculatorEngine {
         }
     }
 
-    // Empieza de cero si habia un error
+    // reinicia si existe un error
     private fun reiniciarSiHayError() {
         if (hayError) {
             limpiar()
         }
     }
 
-    // Hace la operacion segun el signo y marca error si se divide entre cero
+    // Hace la operacion dependediendo  del signo y pone error a true si se divide entre cero
     private fun calcular(valorA: Double, signo: String, valorB: Double): Double {
         var resultado = 0.0
         if (signo == "+") {
@@ -132,7 +132,7 @@ class CalculatorEngine {
         } else if (signo == "x") {
             resultado = multiplicar(valorA, valorB)
         } else if (valorB == 0.0) {
-            hayError = true
+            hayError = true //pone a true el error si diivide por 0
         } else {
             resultado = dividir(valorA, valorB)
         }
@@ -160,6 +160,7 @@ class CalculatorEngine {
     }
 
     // Convierte un numero en texto quitando el .0 y los errores de redondeo
+    //para que sea mas manejable
     private fun formatearNumero(numero: Double): String {
         val redondeado = kotlin.math.round(numero * 1000000.0) / 1000000.0
         var texto = redondeado.toString()
